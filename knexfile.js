@@ -16,13 +16,13 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL
+    connection: process.env.DATABASE_URL,
     searchPath: 'salesforce,public',
   },
 
   test: {
     client: 'pg',
-    connection: process.env.TEST_DATABASE_URL || 'postgres://localhost/heroku-tasks-test'
+    connection: process.env.TEST_DATABASE_URL || 'postgres://localhost/heroku-tasks-test',
     searchPath: 'salesforce,public',
   }
 
