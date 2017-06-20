@@ -14,10 +14,8 @@ createdb heroku-tasks
 createdb heroku-tasks-test
 psql -c "ALTER USER ubuntu PASSWORD 'password';"
 
-echo "export DATABASE_URL=postgres://ubuntu:password@localhost/heroku-tasks" >> ~/.profile
-echo "export TEST_DATABASE_URL=postgres://ubuntu:password@localhost/heroku-tasks-test" >> ~/.profile
-
-. ~/.profile
+echo "DATABASE_URL=postgres://ubuntu:password@localhost/heroku-tasks" >> .env
+echo "TEST_DATABASE_URL=postgres://ubuntu:password@localhost/heroku-tasks-test" >> .env
 
 echo "\n-----------------------------"
 echo "Setting up Yarn..."
@@ -32,8 +30,6 @@ echo "-----------------------------\n"
 
 yarn run migrate
 yarn run seed
-yarn run migrate -- --env=test
-
 
 echo "\n-----------------------------"
 echo "Running tests..."

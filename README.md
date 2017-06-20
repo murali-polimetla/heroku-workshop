@@ -18,11 +18,17 @@
 ## Deploy to Heroku
 
 ```
-heroku apps:create
+heroku apps:create --org=app-cloud
 heroku addons:create heroku-postgresql:hobby-dev
+heroku addons:create sendgrid:starter
 git push heroku master
 heroku run yarn run seed
 ```
+
+- Find your sendgrid username and password
+- Create an api key at https://app.sendgrid.com/settings/api_keys
+- Set it with `heroku config:set SENDGRID_API_KEY="..."`
+
 
 ## TODO
 
