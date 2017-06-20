@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const knex = require('../db')
+const sendgrid = require('../lib/sendgrid')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -34,6 +35,8 @@ router.post('/tasks', async (req, res, next) => {
     }
 
     await knex('tasks').insert(task)
+    await sendgrid.send(task)
+
     res.redirect('/')
   } catch(error) {
     return next(error);

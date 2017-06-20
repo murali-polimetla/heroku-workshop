@@ -3,6 +3,9 @@ chai.use(require('chai-http'))
 const expect = chai.expect
 const app = require('../app')
 const db = require('../db')
+const sendgrid = require('../lib/sendgrid')
+
+sendgrid.sendEmail = false
 
 describe("Tasks", () => {
 
@@ -23,11 +26,15 @@ describe("Tasks", () => {
 
   describe("POST /tasks", () => {
     it("creates a task", async () => {
+      try {
       const response = await chai.request(app)
           .post('/tasks')
           .send({'name': 'Do stuff'})
 
       expect(response).to.be.redirect
+      } catch (e) {
+        console.log(e)
+      }
 
       const count = await db('tasks').count()
       expect(count).to.deep.eq([{count: "1"}])

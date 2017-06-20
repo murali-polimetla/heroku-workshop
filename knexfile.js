@@ -5,6 +5,7 @@
 //   var pg = require('pg');
 //   pg.defaults.ssl = true;
 // }
+require('dotenv').config()
 
 module.exports = {
 
