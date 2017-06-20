@@ -10,17 +10,20 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: process.env.DATABASE_URL || 'postgres://localhost/heroku-tasks'
+    connection: process.env.DATABASE_URL || 'postgres://localhost/heroku-tasks',
+    searchPath: 'salesforce,public',
   },
 
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL
+    searchPath: 'salesforce,public',
   },
 
   test: {
     client: 'pg',
     connection: process.env.TEST_DATABASE_URL || 'postgres://localhost/heroku-tasks-test'
+    searchPath: 'salesforce,public',
   }
 
 };
