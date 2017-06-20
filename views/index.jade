@@ -1,5 +1,29 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  if tasks.length
+    .row
+      .col.s12
+        .collection
+          for task in tasks
+            .collection-item(class=task.completed_at ? "completed" : null)
+              form.secondary-content(action=`/tasks/${task.id}`, method="POST")
+                button.btn.btn-small.btn-flat.waves-effect.waves-light(type="submit")
+                  i.material-icons delete
+
+              form.secondary-content(action='/tasks/' + task.id + '/complete', method="POST")
+                button.btn.btn-small.btn-flat.waves-effect.waves-light(type="submit")
+                  i.material-icons done
+
+              = task.name
+            
+
+  .row
+    form.col.s12(action="/tasks", method="POST")
+      .row
+        .input-field.col.s8
+          input.validate(name="name", type="text", id="task_name", placeholder="Enter your task...", autocomplete="off", autofocus)
+          label(for="task_name") First Name
+      .row
+        .input-field.col.s8
+          input.waves-effect.waves-light.btn(type="submit")
