@@ -14,3 +14,12 @@
 
 - https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile
 - https://devcenter.heroku.com/articles/release-phase
+
+## TODO
+
+- Add Account CRUD to show heroku updating salesforce
+- Comment out things in master
+- Create a branch where they are uncommented for create
+- Create a branch where they are uncommented for delete
+- Create a branch where account CRUD is enabled
+- Add sendgrid email notification to env var

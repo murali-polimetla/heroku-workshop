@@ -1,8 +1,15 @@
 {
+  "name": "Heroku / Galvanize Workshop",
+  "scripts": {
+    "postdeploy": "yarn run migrate"
+  },
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
   "environments": {
     "test": {
       "addons":[
-        "heroku-postgresql:standard-0"
+        "heroku-postgresql:hobby-dev"
       ]
     }
   }
