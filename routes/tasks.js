@@ -5,7 +5,20 @@ const knex = require('../db')
 router.get('/', async (req, res, next) => {
   try {
     const tasks = await knex('tasks').orderBy('id')
-    res.render('index', { tasks })
+
+    // Uncomment the lines below to enable Salesforce connect
+    const accounts = await knex('account')
+    const accountsIndex = accounts.reduce((result, account) => {
+      result[account.id] = account
+      return result
+    }, {})
+    tasks.forEach(task => {
+      if (task.account_id && accountsIndex[task.account_id]) {
+        task.accountName = accountsIndex[task.account_id].name
+      }
+    })
+
+    res.render('index', { tasks, accounts })
   } catch(error) {
     return next(error);
   }
@@ -14,7 +27,13 @@ router.get('/', async (req, res, next) => {
 router.post('/tasks', async (req, res, next) => {
   try {
     if (!req.body.name) return next('Name cannot be blank')
-    await knex('tasks').insert({name: req.body.name})
+    const task = {name: req.body.name}
+
+    if (req.body.account_id) {
+      task.account_id = req.body.account_id
+    }
+
+    await knex('tasks').insert(task)
     res.redirect('/')
   } catch(error) {
     return next(error);

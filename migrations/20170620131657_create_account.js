@@ -1,12 +1,10 @@
 exports.up = async function(knex, Promise) {
-  await knex.schema.createTable('tasks', function(table) {
+  await knex.schema.withSchema('public').createTable('account', function(table) {
     table.increments('id').primary()
     table.string('name')
-    table.integer('account_id')
-    table.dateTime('completed_at')
   })
 };
 
 exports.down = async function(knex, Promise) {
-  await knex.schema.dropTable('tasks')
+  await knex.schema.withSchema('public').createTable('account')
 };
