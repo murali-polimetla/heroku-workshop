@@ -9,6 +9,7 @@
   "environments": {
     "test": {
       "addons":[
+        "sendgrid:starter",
         "heroku-postgresql:hobby-dev"
       ]
     }
