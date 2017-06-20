@@ -6,6 +6,7 @@
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
     "start": "node ./bin/www",
+    "pretest": "knex migrate:latest --env=test",
     "test": "NODE_ENV=test mocha --recursive test"
   },
   "dependencies": {
