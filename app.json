@@ -3,7 +3,16 @@
   "scripts": {
     "postdeploy": "yarn run migrate"
   },
+  "env": {
+    "SENDGRID_API_KEY": {
+      "required": true
+    },
+    "FROM_EMAIL": {
+      "required": true
+    }
+  },
   "addons": [
+    "sendgrid:starter",
     "heroku-postgresql:hobby-dev"
   ],
   "environments": {
