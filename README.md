@@ -15,6 +15,15 @@
 - https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile
 - https://devcenter.heroku.com/articles/release-phase
 
+## Deploy to Heroku
+
+```
+heroku apps:create
+heroku addons:create heroku-postgresql:hobby-dev
+git push heroku master
+heroku run yarn run seed
+```
+
 ## TODO
 
 - Add Account CRUD to show heroku updating salesforce
