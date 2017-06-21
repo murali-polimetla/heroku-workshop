@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'test') {
+  require('newrelic')
+}
+
 require('dotenv').config({silent: true})
 
 const express = require('express')
