@@ -37,5 +37,5 @@ heroku run yarn run seed
 - Create a branch where they are uncommented for create
 - Create a branch where they are uncommented for delete
 - Create a branch where account CRUD is enabled
-- Add sendgrid email notification to env var
-- Re-enable `release: npm run migrate` in Procfile
+- Will the app auto-migrate on production?
+  - If not, re-enable `release: npm run migrate` in Procfile

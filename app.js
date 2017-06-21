@@ -1,8 +1,8 @@
-if (process.env.NODE_ENV !== 'test') {
+require('dotenv').config({silent: true})
+
+if (process.env.NODE_ENV !== 'test' && process.env.NEW_RELIC_LICENSE_KEY) {
   require('newrelic')
 }
-
-require('dotenv').config({silent: true})
 
 const express = require('express')
 const path = require('path')
