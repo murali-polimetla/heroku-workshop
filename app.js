@@ -13,6 +13,7 @@ const cookieParser = require('cookie-parser')
 const moment = require('moment')
 
 const tasks = require('./routes/tasks')
+const api = require('./routes/api')
 
 const app = express()
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.locals.moment = moment
 
 app.use('/', tasks)
+app.use('/', api)
 
 app.use(function(req, res, next) {
   const err = new Error('Not Found')

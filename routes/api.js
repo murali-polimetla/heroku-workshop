@@ -4,14 +4,14 @@ var router = express.Router();
 
 router.get('/messages', function (req, res, next) {
   setTimeout(() => {
-    res.render('index', { title: 'Express' });
+    res.json({hello: "World"})
   }, 500);
 });
 
 router.get('/clocks', function (req, res, next) {
   const start = new Date().getTime();
   while (new Date().getTime() < start + 100);
-  res.render('index', { title: 'Express' });
+  res.json({hello: "World"})
 });
 
 router.get('/atan2/:count', (req, res, next) => {
@@ -39,7 +39,7 @@ router.get('/maps', function (req, res, next) {
 const mem = [];
 router.get('/pipes', function (req, res, next) {
   mem.push(new Uint8Array(50000));
-  res.render('index', { title: 'Express' });
+  res.json({hello: "World"})
 });
 
 // http://buildnewgames.com/garbage-collector-friendly-code/
@@ -48,7 +48,7 @@ router.get('/bins', function (req, res, next) {
     global.x = new Array(1000);
   }
   for (let i = 0; i < 1000; i++) func();
-  res.render('index', { title: 'Express' });
+  res.json({hello: "World"})
 });
 
 const handles = [];
@@ -56,7 +56,7 @@ router.get('/handles', function (req, res, next) {
   var filename = __dirname + 'package.json';
   var readStream = fs.createReadStream(filename);
   handles.push(readStream);
-  res.render('index', { title: 'Express' });
+  res.json({hello: "World"})
 });
 
 router.get('/children', function (req, res, next) {
@@ -65,7 +65,7 @@ router.get('/children', function (req, res, next) {
   exec(cmd, function (error, stdout, stderr) {
     // command output is in stdout
   });
-  res.render('index', { title: 'Express' });
+  res.json({hello: "World"})
 });
 
 router.get('/custom/:value', function (req, res) {

@@ -31,7 +31,7 @@ The discovery phase of your attack has already been completed. A colleague of yo
 Your task is to pick one of these endpoints, and attack it with everything you have. Try to take down WellCo:
 
 ```
-$ artillery quick --duration 60 --rate 10 -n 20 http://<your-oponent>/<your-favorite-endpoint>
+yarn run artillery -- quick -o artillery --duration 60 --rate 10 -n 20 http://<your-oponent>/<your-favorite-endpoint>
 ```
 
 If and when the WellCo engineer can identify the endpoint you are attacking, they will block it, and your attack will be thwarted.
