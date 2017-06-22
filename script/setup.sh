@@ -7,6 +7,12 @@ nvm install 7
 nvm alias default 7
 
 echo "\n-----------------------------"
+echo "Updating Heroku CLI..."
+echo "-----------------------------\n"
+
+heroku update
+
+echo "\n-----------------------------"
 echo "Staring PostgreSQL..."
 echo "-----------------------------\n"
 sudo service postgresql start

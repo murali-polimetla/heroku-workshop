@@ -1,7 +1,7 @@
 {
   "name": "Heroku / Galvanize Workshop",
   "scripts": {
-    "postdeploy": "yarn run migrate && yarn run seed"
+    "postdeploy": "yarn run seed"
   },
   "env": {
   },
