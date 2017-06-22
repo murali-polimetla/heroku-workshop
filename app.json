@@ -1,24 +1,16 @@
 {
   "name": "Heroku / Galvanize Workshop",
   "scripts": {
-    "postdeploy": "yarn run migrate"
+    "postdeploy": "yarn run migrate && yarn run seed"
   },
   "env": {
-    "SENDGRID_API_KEY": {
-      "required": true
-    },
-    "FROM_EMAIL": {
-      "required": true
-    }
   },
   "addons": [
-    "sendgrid:starter",
     "heroku-postgresql:hobby-dev"
   ],
   "environments": {
     "test": {
       "addons":[
-        "sendgrid:starter",
         "heroku-postgresql:hobby-dev"
       ]
     }
