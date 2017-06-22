@@ -2,3 +2,21 @@ extends layout
 
 block content
   h1 Tasks
+  if tasks.length
+    .row
+      .col.s12
+        ul.collection
+          for task in tasks
+            li.collection-item(class=task.completed_at ? "completed" : null)
+              form.secondary-content(action=`/tasks/${task.id}`, method="POST")
+                button.btn.btn-small.btn-flat.waves-effect.waves-light(type="submit")
+                  i.material-icons delete
+  
+              form.secondary-content(action='/tasks/' + task.id + '/complete', method="POST")
+                button.btn.btn-small.btn-flat.waves-effect.waves-light(type="submit")
+                  i.material-icons done
+  
+              span.task-name= task.name
+              if task.accountName
+                span.account-name 
+                  | (#{ task.accountName })
