@@ -20,3 +20,20 @@ block content
               if task.accountName
                 span.account-name 
                   | (#{ task.accountName })
+
+  .row
+    form.col.s12(action="/tasks", method="POST")
+      .row
+        .input-field.col.s8
+          input.validate(name="name", type="text", id="task_name", placeholder="Enter your task...", autocomplete="off", autofocus)
+          label(for="task_name") First Name
+      .row
+        .input-field.col.s8
+          select(name="account_id")
+            option(value="", disabled, selected) Choose an Account
+            for account in accounts
+              option(value=account.id)= account.name
+          label Materialize Select
+      .row
+        .input-field.col.s8
+          input.waves-effect.waves-light.btn(type="submit")

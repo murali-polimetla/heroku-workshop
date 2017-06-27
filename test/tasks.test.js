@@ -24,4 +24,17 @@ describe("Tasks", () => {
     })
   })
 
+  describe("POST /tasks", () => {
+    it("creates a task", async () => {
+      const response = await chai.request(app)
+          .post('/tasks')
+          .send({'name': 'Do stuff'})
+
+      expect(response).to.be.redirect
+
+      const count = await db('tasks').count()
+      expect(count).to.deep.eq([{count: "1"}])
+    })
+  })
+
 })
